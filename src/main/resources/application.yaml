@@ -20,3 +20,8 @@ access:
 logging:
   level:
     org.springframework.web: INFO
+jwt:
+  public:
+    key: classpath:app.pub
+  private:
+    key: classpath:app.key

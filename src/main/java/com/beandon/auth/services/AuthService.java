@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class AuthService {
 
-    private static final long EXPIRE_TIME_MS = 36000L;
+    private static final long EXPIRE_TIME_S = 3600L;
 
     private final JwtEncoder encoder;
 
@@ -27,7 +27,7 @@ public class AuthService {
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
-                .expiresAt(now.plusSeconds(EXPIRE_TIME_MS))
+                .expiresAt(now.plusSeconds(EXPIRE_TIME_S))
                 .subject(authentication.getName())
                 .claim("scope", scope)
                 .build();

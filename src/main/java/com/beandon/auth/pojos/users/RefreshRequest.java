@@ -1,4 +1,4 @@
-package com.beandon.auth.pojo.users;
+package com.beandon.auth.pojos.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
@@ -8,11 +8,9 @@ import lombok.NonNull;
 @Data
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PartialUser {
+public class RefreshRequest {
     @NonNull
-    private String username;
+    private String refresh;
     @NonNull
-    private String password;
-    @NonNull
-    private String role;
+    private String name;
 }

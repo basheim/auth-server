@@ -1,7 +1,7 @@
 package com.beandon.auth.configurations;
 
-import com.beandon.auth.pojo.utility.RequestLog;
-import com.beandon.auth.pojo.utility.ResponseLog;
+import com.beandon.auth.pojos.utility.RequestLog;
+import com.beandon.auth.pojos.utility.ResponseLog;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.filter.OncePerRequestFilter;

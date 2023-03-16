@@ -24,6 +24,9 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
+import org.springframework.security.oauth2.server.resource.web.DefaultBearerTokenResolver;
+import org.springframework.security.oauth2.server.resource.web.HeaderBearerTokenResolver;
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -43,7 +46,10 @@ public class SecurityConfig {
     @Bean
     @Order(1)
     public SecurityFilterChain healthyFilterChain(HttpSecurity http) throws Exception {
-        http.requestMatchers((matchers) -> matchers.antMatchers("/health"));
+        http
+                .requestMatchers((matchers) -> matchers.antMatchers("/health"))
+                .requestMatchers((matchers) -> matchers.antMatchers("/api/v1/refresh"))
+                .csrf().disable();
         return http.build();
     }
 
@@ -74,6 +80,11 @@ public class SecurityConfig {
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
                 );
         return http.build();
+    }
+
+    @Bean
+    BearerTokenResolver bearerTokenResolver() {
+        return new HeaderBearerTokenResolver("X-AUTH-TOKEN");
     }
 
     @Bean

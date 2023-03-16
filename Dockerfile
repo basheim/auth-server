@@ -10,10 +10,10 @@ RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
 COPY scripts/run-application.sh /app/run-application.sh
 
-RUN addgroup usergroup
-RUN adduser --no-create-home --disabled-password --ingroup usergroup appuser
-RUN chown -R appuser:usergroup /app
-USER appuser
+# RUN addgroup usergroup
+# RUN adduser --no-create-home --disabled-password --ingroup usergroup appuser
+# RUN chown -R appuser:usergroup /app
+# USER appuser
 
 EXPOSE 8000
 

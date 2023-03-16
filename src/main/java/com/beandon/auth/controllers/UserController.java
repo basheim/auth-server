@@ -1,6 +1,8 @@
 package com.beandon.auth.controllers;
 
-import com.beandon.auth.pojo.users.PartialUser;
+import com.beandon.auth.pojos.users.PartialUser;
+import com.beandon.auth.pojos.users.RefreshRequest;
+import com.beandon.auth.pojos.users.Tokens;
 import com.beandon.auth.services.AuthService;
 import com.beandon.auth.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +34,21 @@ public class UserController {
     }
 
     @PostMapping("/authenticate")
-    public String authenticate(Authentication authentication) {
-        return authService.getToken(authentication);
+    public Tokens authenticate(Authentication authentication) {
+        return Tokens.builder()
+                .token(authService.getToken(authentication))
+                .refresh(authService.getRefresh(authentication))
+                .name(authentication.getName())
+                .build();
+    }
+
+    @PostMapping("/refresh")
+    public Tokens refresh(@RequestBody RefreshRequest refreshRequest) {
+        String token = authService.refreshToken(refreshRequest.getRefresh(), refreshRequest.getName());
+        return Tokens.builder()
+                .token(token)
+                .refresh(refreshRequest.getRefresh())
+                .name(refreshRequest.getName())
+                .build();
     }
 }

@@ -1,14 +1,13 @@
-package com.beandon.auth.pojo.users;
+package com.beandon.auth.pojos.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.NonNull;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Auth {
-    @NonNull
+public class UserData {
+    private String id;
     private String username;
-    @NonNull
     private String password;
+    private String role;
 }

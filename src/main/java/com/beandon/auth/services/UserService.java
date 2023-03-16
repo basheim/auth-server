@@ -1,7 +1,7 @@
 package com.beandon.auth.services;
 
-import com.beandon.auth.pojo.users.PartialUser;
-import com.beandon.auth.pojo.users.UserData;
+import com.beandon.auth.pojos.users.PartialUser;
+import com.beandon.auth.pojos.users.UserData;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

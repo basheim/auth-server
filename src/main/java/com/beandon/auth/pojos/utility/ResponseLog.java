@@ -1,4 +1,4 @@
-package com.beandon.auth.pojo.utility;
+package com.beandon.auth.pojos.utility;
 
 import lombok.Builder;
 import lombok.Data;

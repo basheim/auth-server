@@ -4,6 +4,7 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 server:
+  port: 8000
   error:
     includeMessage: always
 aws:
@@ -22,6 +23,6 @@ logging:
     org.springframework.web: INFO
 jwt:
   public:
-    key: classpath:app.pub
+    key: ${JWT_PUBLIC_PATH}
   private:
-    key: classpath:app.key
+    key: ${JWT_PRIVATE_PATH}

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build . -t basheim/beans-backend
-docker push basheim/beans-backend:latest
+docker build . -t basheim/auth-service
+docker push basheim/auth-service:latest

@@ -5,7 +5,7 @@ A basic Spring service to manage auth.
 
 ## Operation
 The service is managed on EC2 using the shared [Release Scripts](https://github.com/basheim/release-scripts) with the
--a identifier.
+-j identifier.
 
 To build and push a new image, run `sh ./scripts/image_build.sh`.
 

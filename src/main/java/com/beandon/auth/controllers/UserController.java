@@ -32,7 +32,7 @@ public class UserController {
     public void deleteUser(@PathVariable String username) {
         userService.deleteUser(username);
     }
-    @CrossOrigin()
+
     @PostMapping("/authenticate")
     public Tokens authenticate(Authentication authentication) {
         return Tokens.builder()

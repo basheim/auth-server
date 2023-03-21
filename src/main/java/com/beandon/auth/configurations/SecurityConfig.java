@@ -49,6 +49,7 @@ public class SecurityConfig {
         http
                 .requestMatchers((matchers) -> matchers.antMatchers("/health"))
                 .requestMatchers((matchers) -> matchers.antMatchers("/api/v1/refresh"))
+                .cors().and()
                 .csrf().disable();
         return http.build();
     }
@@ -62,6 +63,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .csrf().disable()
+                .cors().and()
                 .httpBasic();
         return http.build();
     }
@@ -73,6 +75,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
+                .cors().and()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling((exceptions) -> exceptions

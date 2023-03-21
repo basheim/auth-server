@@ -51,4 +51,7 @@ public class UserController {
                 .name(refreshRequest.getName())
                 .build();
     }
+
+    @GetMapping("/check")
+    public void check() {}
 }
